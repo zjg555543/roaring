@@ -89,10 +89,10 @@ func (ac *arrayContainer) iaddRange(firstOfRange, endx int) container {
 		return a.iaddRange(firstOfRange, endx)
 	}
 	if cap(ac.content) < newcardinality {
+		fmt.Println(fmt.Sprintf("len(ac.content):%v, newcardinality:%v", newcardinality))
 		tmp := make([]uint16, newcardinality, newcardinality)
 		copy(tmp[:indexstart], ac.content[:indexstart])
 		copy(tmp[indexstart+rangelength:], ac.content[indexend:])
-
 		ac.content = tmp
 	} else {
 		ac.content = ac.content[:newcardinality]
