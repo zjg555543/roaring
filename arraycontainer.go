@@ -69,6 +69,7 @@ func arrayContainerSizeInBytes(card int) int {
 
 // add the values in the range [firstOfRange,endx)
 func (ac *arrayContainer) iaddRange(firstOfRange, endx int) container {
+	fmt.Println("zjg, iaddRange...........1")
 	if firstOfRange >= endx {
 		return ac
 	}
@@ -89,6 +90,7 @@ func (ac *arrayContainer) iaddRange(firstOfRange, endx int) container {
 		return a.iaddRange(firstOfRange, endx)
 	}
 	if cap(ac.content) < newcardinality {
+		fmt.Println("zjg, iaddRange...........2")
 		fmt.Println(fmt.Sprintf("len(ac.content):%v, newcardinality:%v", newcardinality))
 		tmp := make([]uint16, newcardinality, newcardinality)
 		copy(tmp[:indexstart], ac.content[:indexstart])
